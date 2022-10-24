@@ -2,16 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import {Provider} from "react-redux";
+//우리가 slice를 등록한 js파일
+import Store from "./store/Store";
+
+//전역변수 등록한 store를 변수로 할당
+const store = Store;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    //Provider 에 store를 설정해주면 Provider하위의 모든 컴포넌트에서 사용 가능
+    <Provider store={store}>
+        <App />
+    </Provider>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
